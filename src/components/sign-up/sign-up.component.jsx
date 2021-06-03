@@ -22,8 +22,6 @@ class SignUp extends Component {
     e.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
 
-    console.log(displayName);
-
     if (password !== confirmPassword) {
       alert("password don't match");
       return;
@@ -33,7 +31,8 @@ class SignUp extends Component {
         email,
         password
       );
-      await createUserProfileDocument(user, { displayName: displayName });
+
+      await createUserProfileDocument(user, { displayName });
     } catch (err) {
       console.log(err);
     }
