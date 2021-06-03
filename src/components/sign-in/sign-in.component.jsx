@@ -10,6 +10,7 @@ import {
 } from '../../firebase/firebase.utils';
 
 import { auth } from '../../firebase/firebase.utils';
+import { connect } from 'react-redux';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class SignIn extends React.Component {
             label="password"
             required
           />
-          <div className="button">
+          <div className="buttons">
             <CustomButton type="submit"> Sign in </CustomButton>
             <CustomButton
               type="button"
