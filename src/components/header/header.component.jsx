@@ -14,7 +14,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 //Redux utils
 import { selectCurrentUser } from "../../redux/user/user.selector";
-import { selectCartHidden } from "../../redux/cart/cart.selector";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { createStructuredSelector } from "reselect";
 
 const Header = ({ currentUser, hidden }) => {
