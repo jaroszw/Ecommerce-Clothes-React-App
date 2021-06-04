@@ -5,7 +5,10 @@ import "./cart-icon.styles.scss";
 
 //Reducer utils
 import { toggleCartHidden } from "../../redux/cart/cart-actions";
+
+//Selectors
 import { selectCartItemsCount } from "../../redux/cart/cart.selector";
+import { createStructuredSelector } from "reselect";
 
 const CartIcon = ({ toggleCartHidden, itemCount }) => {
   return (
@@ -20,11 +23,15 @@ const mapDispatchToProps = (dispatch) => ({
   toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
-const mapStateToProps = (state) => {
-  return {
-    itemCount: selectCartItemsCount(state),
-  };
-};
+const mapStateToProps = createStructuredSelector({
+  itemCount: selectCartItemsCount,
+});
+
+// const mapStateToProps = (state) => {
+//   return {
+//     itemCount: selectCartItemsCount(state),
+//   };
+// };
 // const mapStateToProps = (state) => {
 //   console.log("WITHOUT RESELECT ITEM COUNT");
 //   return {
