@@ -51,6 +51,23 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 //   return await batch.commit()
 // };
 
+export const convertCollectionSnapshotToMap = (colections) => {
+  const transformedCollections = colections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routName: encodeURI(title.toLowerCase()),
+      items,
+      title,
+      id: doc.id,
+    };
+  });
+
+  return transformedCollections.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
+
 // Initialize Firebase
 firebase.initializeApp(config);
 
