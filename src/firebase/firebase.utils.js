@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { isCompositeComponentWithType } from 'react-dom/test-utils';
+import { batch } from 'react-redux';
 
 const config = {
   apiKey: 'AIzaSyC8pUU8d2O6qkRRQRW0yYVcNLsFcN9Y9MU',
@@ -15,6 +17,10 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
+
+  // const collectionRef = firestore.collection(`collections`);
+  // const collectionSnap = await collectionRef.get();
+  // collectionSnap.docs.map((doc) => console.log(doc.data()));
 
   if (!snapShot.exists) {
     try {
@@ -31,6 +37,19 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   return userRef;
 };
+
+// export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
+//   const collectionRef = await firestore.collection(collectionKey);
+
+//   const batch = firestore.batch();
+
+//   objectToAdd.forEach((obj) => {
+//     const newDocRef = collectionRef.doc();
+//     batch.set(newDocRef, obj);
+//     // newDocRef.set(obj);
+//   });
+//   return await batch.commit()
+// };
 
 // Initialize Firebase
 firebase.initializeApp(config);
