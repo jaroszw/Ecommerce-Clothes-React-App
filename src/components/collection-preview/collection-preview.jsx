@@ -1,10 +1,9 @@
 import React from 'react';
 import './collection-preview.styles.scss';
-import { withRouter } from 'react-router-dom';
 
 import CollectionItem from '../collection-item/collection-item.component';
 
-const CollectionPreview = ({ title, items, history, location }) => {
+const CollectionPreview = ({ title, items }) => {
   return (
     <div className="collection-preview">
       <h1 className="title">{title.toUpperCase()}</h1>
@@ -19,4 +18,4 @@ const CollectionPreview = ({ title, items, history, location }) => {
   );
 };
 
-export default withRouter(CollectionPreview);
+export default CollectionPreview;
