@@ -10,7 +10,6 @@ import {
 } from '../../firebase/firebase.utils';
 
 import { auth } from '../../firebase/firebase.utils';
-import { connect } from 'react-redux';
 
 class SignIn extends React.Component {
   constructor(props) {
