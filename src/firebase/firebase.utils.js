@@ -1,8 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import { isCompositeComponentWithType } from 'react-dom/test-utils';
-import { batch } from 'react-redux';
+// import { batch } from 'react-redux';
 
 const config = {
   apiKey: 'AIzaSyC8pUU8d2O6qkRRQRW0yYVcNLsFcN9Y9MU',
