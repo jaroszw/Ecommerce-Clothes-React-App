@@ -20,8 +20,6 @@ import { updateCollections } from '../../redux/shop/shop.actions';
 const CollectionOverviewWithSpinner = WithSpinner(CollectionOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
-console.log(CollectionOverviewWithSpinner);
-
 class ShopPage extends Component {
   state = {
     loading: true,
@@ -32,7 +30,15 @@ class ShopPage extends Component {
   componentDidMount() {
     const { updateCollections } = this.props;
     const collectionRef = firestore.collection('collections');
-    collectionRef.onSnapshot(async (snapshot) => {
+
+    //Using Firebase REST API
+    // fetch(
+    //   'https://firestore.googleapis.com/v1/projects/ecommerceclth/databases/(default)/documents/collections'
+    // )
+    //   .then((resposne) => resposne.json())
+    //   .then((data) => console.log(data));
+
+    collectionRef.get().then((snapshot) => {
       const collectionsMap = convertCollectionSnapshotToMap(snapshot);
       updateCollections(collectionsMap);
       this.setState({ loading: false });
