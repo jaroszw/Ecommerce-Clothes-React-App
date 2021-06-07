@@ -12,11 +12,11 @@ import CollectionPage from "./collection.component";
 // });
 
 const mapStateToProps = (state) => {
-  console.log(
-    createStructuredSelector({
-      isLoading: (state) => !selectIsCollectionsLoaded(state),
-    })
-  );
+  // console.log(
+  //   createStructuredSelector({
+  //     isLoading: (state) => !selectIsCollectionsLoaded(state),
+  //   })
+  // );
 
   return createStructuredSelector({
     isLoading: (state) => !selectIsCollectionsLoaded(state),
