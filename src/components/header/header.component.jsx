@@ -1,19 +1,19 @@
 //React utils
-import React from 'react';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+import React from "react";
+import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 //Firebase utils
-import { auth } from '../../firebase/firebase.utils';
-import { connect } from 'react-redux';
+import { auth } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
 
 //Components
-import CartIcon from '../cart-icon/cart-icon.component';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 //Redux utils
-import { selectCurrentUser } from '../../redux/user/user.selector';
-import { selectCartHidden } from '../../redux/cart/cart.selectors';
-import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from "../../redux/user/user.selector";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
 
 //Styled components
 import {
@@ -21,9 +21,9 @@ import {
   HeaderContainer,
   OptionsContainer,
   OptionLink,
-} from './header.styles';
+} from "./header.styles";
 
-const Header = ({ currentUser, hidden }) => {
+const Header = ({ currentUser, hidden, googleSignInStart }) => {
   return (
     <HeaderContainer>
       <LogoContainer to="/">

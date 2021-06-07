@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import './App.css';
-import Header from './components/header/header.component';
+import React, { Component } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import "./App.css";
+import Header from "./components/header/header.component";
 
 //Pages
-import HomePage from './pages/homepage/homepage.component';
-import ShopPage from './pages/shop/shop.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import CheckoutPage from './pages/checkout/checkout.component';
+import HomePage from "./pages/homepage/homepage.component";
+import ShopPage from "./pages/shop/shop.component";
+import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import CheckoutPage from "./pages/checkout/checkout.component";
 
 //Firebase utils
 import {
   auth,
   createUserProfileDocument,
   // addCollectionAndDocuments,
-} from './firebase/firebase.utils';
-import { connect } from 'react-redux';
-import { setCurrentUser } from './redux/user/user.actions';
+} from "./firebase/firebase.utils";
+import { connect } from "react-redux";
+import { setCurrentUser } from "./redux/user/user.actions";
 
-import { selectCollectionForPreview } from './redux/shop/shop.selector';
+import { selectCollectionForPreview } from "./redux/shop/shop.selector";
 
 //Selector
-import { selectCurrentUser } from './redux/user/user.selector';
-import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from "./redux/user/user.selector";
+import { createStructuredSelector } from "reselect";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -30,25 +30,17 @@ class App extends Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.get().then((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      }
-      setCurrentUser(userAuth);
-      // addCollectionAndDocuments(
-      //   'collections',
-      //   collectionsArray.map(({ title, items }) => ({
-      //     title,
-      //     items,
-      //   }))
-      // );
-    });
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     userRef.get().then((snapShot) => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data(),
+    //       });
+    //     });
+    //   }
+    // })
   }
 
   componentWillUnmount = () => {
@@ -85,9 +77,5 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   collectionsArray: selectCollectionForPreview,
 });
-
-// const mapStateToProps = (state) => ({
-//   currentUser: selectCurrentUser(state),
-// });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

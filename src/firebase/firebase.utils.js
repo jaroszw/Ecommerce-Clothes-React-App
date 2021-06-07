@@ -1,15 +1,15 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 // import { batch } from 'react-redux';
 
 const config = {
-  apiKey: 'AIzaSyC8pUU8d2O6qkRRQRW0yYVcNLsFcN9Y9MU',
-  authDomain: 'ecommerceclth.firebaseapp.com',
-  projectId: 'ecommerceclth',
-  storageBucket: 'ecommerceclth.appspot.com',
-  messagingSenderId: '635410647550',
-  appId: '1:635410647550:web:4da45f6fdc111fa2f018af',
+  apiKey: "AIzaSyC8pUU8d2O6qkRRQRW0yYVcNLsFcN9Y9MU",
+  authDomain: "ecommerceclth.firebaseapp.com",
+  projectId: "ecommerceclth",
+  storageBucket: "ecommerceclth.appspot.com",
+  messagingSenderId: "635410647550",
+  appId: "1:635410647550:web:4da45f6fdc111fa2f018af",
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
@@ -30,7 +30,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData,
       });
     } catch (err) {
-      console.log('error creating user', err.message);
+      console.log("error creating user", err.message);
     }
   }
 
@@ -73,7 +73,7 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+// export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 export default firebase;
