@@ -1,15 +1,14 @@
-import React from 'react';
+import React from "react";
 
 //Components
-import CollectionPreview from '../collection-preview/collection-preview';
+import CollectionPreview from "../collection-preview/collection-preview";
 
 //Redux and selector
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { selectCollectionForPreview } from '../../redux/shop/shop.selector';
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCollectionForPreview } from "../../redux/shop/shop.selector";
 
 const collectionsOverview = ({ collections }) => {
-  console.log('OVERVIEW PAGE');
   return (
     <div className="collections-overview">
       {collections.map(({ id, ...otherCollectionProps }) => (
