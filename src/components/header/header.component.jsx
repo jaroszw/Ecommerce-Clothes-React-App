@@ -1,9 +1,7 @@
 //React utils
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-
-//Firebase utils
-import { connect } from "react-redux";
 
 //Components
 import CartIcon from "../cart-icon/cart-icon.component";
@@ -12,8 +10,8 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 //Redux utils
 import { selectCurrentUser } from "../../redux/user/user.selector";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
-import { createStructuredSelector } from "reselect";
 
+//user action
 import { signOutUserStart } from "../../redux/user/user.actions";
 
 //Styled components
@@ -24,7 +22,11 @@ import {
   OptionLink,
 } from "./header.styles";
 
-const Header = ({ currentUser, hidden, signOutUserStart }) => {
+const Header = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  const hidden = useSelector(selectCartHidden);
+
   return (
     <HeaderContainer>
       <LogoContainer to="/">
@@ -34,7 +36,7 @@ const Header = ({ currentUser, hidden, signOutUserStart }) => {
         <OptionLink to="/shop">SHOP</OptionLink>
         <OptionLink to="/shop">CONTACT</OptionLink>
         {currentUser ? (
-          <OptionLink as="div" onClick={signOutUserStart}>
+          <OptionLink as="div" onClick={() => dispatch(signOutUserStart())}>
             SIGN OUT
           </OptionLink>
         ) : (
@@ -47,20 +49,4 @@ const Header = ({ currentUser, hidden, signOutUserStart }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  hidden: selectCartHidden,
-});
-
-// const mapStateToProps = (state) => {
-//   return {
-//     currentUser: selectCurrentUser(state),
-//     cartHidden: selectCartHidden(state),
-//   };
-// };
-
-const mapDispatchToProps = (dispatch) => ({
-  signOutUserStart: () => dispatch(signOutUserStart()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
