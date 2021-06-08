@@ -1,3 +1,4 @@
+import { bindActionCreators } from "redux";
 import userActionTypes from "./user.types";
 
 export const setCurrentUser = (user) => ({
@@ -41,5 +42,21 @@ export const signOutUserSuccess = () => ({
 });
 export const signOutUserFailure = (error) => ({
   type: userActionTypes.SIGN_OUT_FAILURE,
+  payload: error,
+});
+
+//Sing Up
+export const signUpUserStart = (userCredentials) => ({
+  type: userActionTypes.SIGN_UP_START,
+  payload: userCredentials,
+});
+
+export const signUpUserSuccess = ({ user, additionalData }) => ({
+  type: userActionTypes.SIGN_UP_SUCCESS,
+  payload: { user, additionalData },
+});
+
+export const signUpUserFailure = (error) => ({
+  type: userActionTypes.SIGN_UP_FAILURE,
   payload: error,
 });
