@@ -55,9 +55,7 @@ export function* isUserAuthenticated() {
 
 export function* userSignOut() {
   try {
-    console.log("SIGNING OUT");
     yield auth.signOut();
-    console.log("SIGNING OUT SUCCESS");
     yield put(signOutUserSuccess());
   } catch (error) {
     yield put(signOutUserFailure(error));
@@ -65,10 +63,6 @@ export function* userSignOut() {
 }
 
 //Saga listeners
-export function* onSignOut() {
-  yield takeLatest(userActionTypes.CHECK_USER_SESSION, isUserAuthenticated);
-}
-
 export function* onCheckUserSession() {
   yield takeLatest(userActionTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
