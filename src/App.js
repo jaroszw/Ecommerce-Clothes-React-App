@@ -24,6 +24,9 @@ import { selectCollectionForPreview } from './redux/shop/shop.selector';
 import { selectCurrentUser } from './redux/user/user.selector';
 import { createStructuredSelector } from 'reselect';
 
+//Context
+import CurrentUserContext from './context/current-user/current-user.context';
+
 class App extends Component {
   unsubscribeFromAuth = null;
 
