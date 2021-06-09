@@ -5,9 +5,10 @@ import axios from "axios";
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
   const publishableKey =
-    "pk_test_51HeH52LSYGGA5Tg8D7mKt9ky0Ws0ODcKknL5xZz0Alxg2vpM8GNOwiK6Wa81vYgvvJ749Daxhim64CqnWuisJjp200syBAJ8Bg";
+    "pk_test_51I75gJHo3WX4B3frK3dXXk6wyTmsSJV8P57dVRqj1uBJZqISARO6KaWH8LCUXAru2s4cT357e8mY3cIu7mb29tMK0022lrqpPv";
 
   const onToken = (token) => {
+    console.log('Payment sent to stripe')
     axios({
       url: "payment",
       method: "post",
@@ -18,6 +19,7 @@ const StripeCheckoutButton = ({ price }) => {
     })
       .then((response) => {
         alert("Payment successful");
+        console.log(response)
       })
       .catch((err) => {
         console.log("Payment error: ", JSON.parse(err));
