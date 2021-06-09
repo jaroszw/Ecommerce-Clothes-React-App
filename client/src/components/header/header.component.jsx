@@ -1,18 +1,18 @@
 //React utils
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 //Components
-import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 //Redux utils
-import { selectCurrentUser } from "../../redux/user/user.selector";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { selectCurrentUser } from '../../redux/user/user.selector';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
 
 //user action
-import { signOutUserStart } from "../../redux/user/user.actions";
+import { signOutUserStart } from '../../redux/user/user.actions';
 
 //Styled components
 import {
@@ -20,7 +20,7 @@ import {
   HeaderContainer,
   OptionsContainer,
   OptionLink,
-} from "./header.styles";
+} from './header.styles';
 
 const Header = () => {
   const dispatch = useDispatch();
