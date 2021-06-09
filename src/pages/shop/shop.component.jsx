@@ -1,16 +1,19 @@
-import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
 
 //Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 //Thunk and Redux
-import { fetchCollectionsStartAsync } from "../../redux/shop/shop.actions";
+import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
 
 //Components
-import CollectionOverviewContainer from "../../components/collections-overview/collections-overview.container";
-import CollectionPageContainer from "../collection/collection.container";
-import CollectionPage from "../collection/collection.component";
+import CollectionOverviewContainer from '../../components/collections-overview/collections-overview.container';
+import CollectionPageContainer from '../collection/collection.container';
+import CollectionPage from '../collection/collection.component';
+
+//Context
+import CollectionContext from '../../context/collections/colections.context';
 
 class ShopPage extends Component {
   unsubscribeFromSnapshot = null;
