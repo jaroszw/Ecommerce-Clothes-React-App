@@ -1,13 +1,6 @@
 import React, { useContext } from "react";
 import "./collection-item.styles.scss";
-
-//Components
 import CustomButton from "../custom-button/custom-button.component";
-
-//Redux utiliy
-import { connect } from "react-redux";
-// import { addItem } from "../../redux/cart/cart-actions";
-
 import { CartContext } from "../../providers/cart/cart.provider";
 
 const CollectionItem = ({ item }) => {
@@ -32,9 +25,5 @@ const CollectionItem = ({ item }) => {
     </div>
   );
 };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   addItem: (item) => dispatch(addItem(item)),
-// });
 
 export default CollectionItem;

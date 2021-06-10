@@ -1,19 +1,13 @@
 //React utils
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 //Firebase utils
 import { auth } from "../../firebase/firebase.utils";
-import { connect } from "react-redux";
 
 //Components
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-
-//Redux utils
-import { selectCurrentUser } from "../../redux/user/user.selector";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
-import { createStructuredSelector } from "reselect";
 
 //Styled components
 import {
@@ -50,7 +44,7 @@ const Header = () => {
         </CurrentUserContext.Consumer>
         <CartIcon />
       </OptionsContainer>
-      {hidden && <CartDropdown />}
+      {!hidden && <CartDropdown />}
     </HeaderContainer>
   );
 };
