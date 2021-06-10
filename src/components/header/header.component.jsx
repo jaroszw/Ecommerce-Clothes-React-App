@@ -1,19 +1,19 @@
 //React utils
-import React from 'react';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+import React, { useContext, useState } from "react";
+import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 //Firebase utils
-import { auth } from '../../firebase/firebase.utils';
-import { connect } from 'react-redux';
+import { auth } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
 
 //Components
-import CartIcon from '../cart-icon/cart-icon.component';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 //Redux utils
-import { selectCurrentUser } from '../../redux/user/user.selector';
-import { selectCartHidden } from '../../redux/cart/cart.selectors';
-import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from "../../redux/user/user.selector";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
 
 //Styled components
 import {
@@ -21,9 +21,13 @@ import {
   HeaderContainer,
   OptionsContainer,
   OptionLink,
-} from './header.styles';
+} from "./header.styles";
 
-const Header = ({ currentUser, hidden }) => {
+import CurrentUserContext from "../../context/current-user/current-user.context";
+import { CartContext } from "../../providers/cart/cart.provider";
+
+const Header = () => {
+  const { hidden } = useContext(CartContext);
   return (
     <HeaderContainer>
       <LogoContainer to="/">
@@ -32,13 +36,18 @@ const Header = ({ currentUser, hidden }) => {
       <OptionsContainer>
         <OptionLink to="/shop">SHOP</OptionLink>
         <OptionLink to="/shop">CONTACT</OptionLink>
-        {currentUser ? (
-          <OptionLink as="div" onClick={() => auth.signOut()}>
-            SIGN OUT
-          </OptionLink>
-        ) : (
-          <OptionLink to="/signin">SIGN IN</OptionLink>
-        )}
+
+        <CurrentUserContext.Consumer>
+          {(currentUser) => {
+            return currentUser ? (
+              <OptionLink as="div" onClick={() => auth.signOut()}>
+                SIGN OUT
+              </OptionLink>
+            ) : (
+              <OptionLink to="/signin">SIGN IN</OptionLink>
+            );
+          }}
+        </CurrentUserContext.Consumer>
         <CartIcon />
       </OptionsContainer>
       {hidden && <CartDropdown />}
@@ -46,16 +55,4 @@ const Header = ({ currentUser, hidden }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  hidden: selectCartHidden,
-});
-
-// const mapStateToProps = (state) => {
-//   return {
-//     currentUser: selectCurrentUser(state),
-//     cartHidden: selectCartHidden(state),
-//   };
-// };
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;
