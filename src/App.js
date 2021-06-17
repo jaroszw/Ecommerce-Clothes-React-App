@@ -1,20 +1,21 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Switch, Route, Redirect } from "react-router-dom";
-import "./App.css";
-import Header from "./components/header/header.component";
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 //Pages
-import HomePage from "./pages/homepage/homepage.component";
-import ShopPage from "./pages/shop/shop.component";
-import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import CheckoutPage from "./pages/checkout/checkout.component";
+import Header from './components/header/header.component';
+import HomePage from './pages/homepage/homepage.component';
+import ShopPage from './pages/shop/shop.component';
+import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 
-import { checkUserSession } from "./redux/user/user.actions";
+import { GlobalStyle } from './global.styles';
+
+import { checkUserSession } from './redux/user/user.actions';
 
 //Selector
-import { selectCurrentUser } from "./redux/user/user.selector";
+import { selectCurrentUser } from './redux/user/user.selector';
 
 const App = () => {
   const currentUser = useSelector(selectCurrentUser);
@@ -26,6 +27,7 @@ const App = () => {
 
   return (
     <div>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />

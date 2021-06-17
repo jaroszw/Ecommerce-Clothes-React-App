@@ -11,6 +11,8 @@ import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 import CollectionOverviewContainer from '../../components/collections-overview/collections-overview.container';
 import CollectionPageContainer from '../collection/collection.container';
 
+import { ShopPageContainer } from './shop-page.styles';
+
 const ShopPage = ({ match }) => {
   const dispatch = useDispatch();
 
@@ -19,7 +21,7 @@ const ShopPage = ({ match }) => {
   }, [dispatch]);
 
   return (
-    <div className="shop-page">
+    <ShopPageContainer>
       <Route
         exact
         path={`${match.path}`}
@@ -29,7 +31,7 @@ const ShopPage = ({ match }) => {
         path={`${match.path}/:collectionId`}
         component={CollectionPageContainer}
       />
-    </div>
+    </ShopPageContainer>
   );
 };
 

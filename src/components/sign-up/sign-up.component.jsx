@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import FormInput from "../form-input/form-input.component";
-import CustomButton from "../custom-button/custom-button.component";
+import FormInput from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
 
-import { signUpUserStart } from "../../redux/user/user.actions";
-import "./sign-up.styles.scss";
+import { signUpUserStart } from '../../redux/user/user.actions';
+import { SignUpContainer } from './sign-up.styles.jsx';
 
 const SignUp = () => {
   const dispatch = useDispatch();
   const [userCredentials, setUserCredentials] = useState({
-    displayName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
 
   const handleSubmit = async (event) => {
@@ -41,7 +41,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up">
+    <SignUpContainer>
       <h2 className="title">I do not have a account</h2>
       <span>Sign up with your email and password</span>
       <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -79,7 +79,7 @@ const SignUp = () => {
         />
         <CustomButton type="submit">SIGN UP</CustomButton>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 
