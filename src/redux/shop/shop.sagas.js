@@ -1,4 +1,4 @@
-import { takeEvery, call, put, all, takeLatest } from "redux-saga/effects";
+import { call, put, all, takeLatest } from "redux-saga/effects";
 import ShopActionTypes from "./shop.types";
 
 import {

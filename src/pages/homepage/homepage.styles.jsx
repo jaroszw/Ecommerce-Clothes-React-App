@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-import styled from 'styled-components';
-
-export const HomepageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 80px;
-`;
-=======
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HomepageContainer = styled.div`
   display: flex;
@@ -16,4 +6,3 @@ export const HomepageContainer = styled.div`
   align-items: center;
   padding: 20px 20px;
 `;
->>>>>>> saga

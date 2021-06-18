@@ -1,4 +1,3 @@
-import { bindActionCreators } from "redux";
 import userActionTypes from "./user.types";
 
 export const setCurrentUser = (user) => ({
